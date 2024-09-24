@@ -1,35 +1,35 @@
-# ÇÑ±¹¾î »ý¼º ¹®¼­ÀÇ ¿ø¼Ò »ç½Ç ±â¹Ý »ç½Ç °ü°è ¼³¸í ±â¼ú
+# í•œêµ­ì–´ ìƒì„± ë¬¸ì„œì˜ ì›ì†Œ ì‚¬ì‹¤ ê¸°ë°˜ ì‚¬ì‹¤ ê´€ê³„ ì„¤ëª… ê¸°ìˆ 
 
 KorFactScore (Korean Factual precision in atomicity Score)
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 
-### °³¹ß ¹è°æ
+### ê°œë°œ ë°°ê²½
 
-* ÀÎ°øÁö´É(AI)ÀÌ »ý¼ºÇÑ ¹®¼­?³» Á¤º¸°¡ ½Å·ÚÇÒ ¼ö ÀÖ´Â Áö¿¡ ´ëÇÑ Ãß°¡ÀûÀÎ °ËÁõÀÌ ÇÊ¿äÇÔ.
-* »ý¼ºµÈ ÇÑ±¹¾î ¹®¼­¿¡ ´ëÇØ ¿ø¼Ò ´ÜÀ§·Î »ç½Ç °ü°è¸¦ °ËÁõÇÏ°í ¼³¸íÇÒ ¼ö ÀÖ´Â µµ±¸°¡ ºÎÀçÇÔ.
-* Æ¯È÷, ÃÖ±Ù ´Ù¾çÇÑ ÇÑ±¹¾î AI ¾ð¾î ¸ðµ¨µé·Î ´ë·®ÀÇ ¹®¼­µéÀ» »ý¼ºÇÏ°í ÀÖ´Â »óÈ²¿¡¼­ ÀÌ·¯ÇÑ ±â¼úÀÇ ÇÊ¿ä¼ºÀÌ ´õ¿í °­Á¶µÇ°í ÀÖÀ½.
+* ì¸ê³µì§€ëŠ¥(AI)ì´ ìƒì„±í•œ ë¬¸ì„œÂ ë‚´ ì •ë³´ê°€ ì‹ ë¢°í•  ìˆ˜ ìžˆëŠ” ì§€ì— ëŒ€í•œ ì¶”ê°€ì ì¸ ê²€ì¦ì´ í•„ìš”í•¨.
+* ìƒì„±ëœ í•œêµ­ì–´ ë¬¸ì„œì— ëŒ€í•´ ì›ì†Œ ë‹¨ìœ„ë¡œ ì‚¬ì‹¤ ê´€ê³„ë¥¼ ê²€ì¦í•˜ê³  ì„¤ëª…í•  ìˆ˜ ìžˆëŠ” ë„êµ¬ê°€ ë¶€ìž¬í•¨.
+* íŠ¹ížˆ, ìµœê·¼ ë‹¤ì–‘í•œ í•œêµ­ì–´ AI ì–¸ì–´ ëª¨ë¸ë“¤ë¡œ ëŒ€ëŸ‰ì˜ ë¬¸ì„œë“¤ì„ ìƒì„±í•˜ê³  ìžˆëŠ” ìƒí™©ì—ì„œ ì´ëŸ¬í•œ ê¸°ìˆ ì˜ í•„ìš”ì„±ì´ ë”ìš± ê°•ì¡°ë˜ê³  ìžˆìŒ.
 
-### ÁÖ¿ä Æ¯Â¡
+### ì£¼ìš” íŠ¹ì§•
 
-* ÇÑ±¹¾î »ý¼º ¹®¼­¿¡ ±â¼úµÈ ¿ø¼Ò »ç½Çµé(Atomic?facts)¿¡ ´ëÇÑ »ç½Ç °ü°è¸¦ ¼³¸íÇÏ´Â ±â¼úÀ» Á¦°ø
-* Æ¯Á¤ ¾ð¾î ¸ðµ¨¿¡ Á¦ÇÑµÇÁö ¾ÊÀ¸¸ç(Model Agnostic), Æò°¡¿ë ¾ð¾î¸ðµ¨À» ±³Ã¼ÇÏ¿© ¸ðµ¨ÀÇ ¼º´ÉÀ» Æò°¡ÇÒ ¼ö ÀÖÀ½
-* Æò°¡¸¦ À§ÇÑ µ¥ÀÌÅÍ¼Â Á¦°ø: »ý¼ºµÈ ¹®¼­, ¿ø¼Ò »ç½Ç(atomic facts)·Î ºÐÇÒµÈ ¹®Àåµé Æ÷ÇÔ
-* ¼º´É Æò°¡¸¦ À§ÇÑ Á¤´ä µ¥ÀÌÅÍ(ground truth label)¿Í Æò°¡ ÄÚµå¸¦ ÇÔ²² Á¦°ø
+* í•œêµ­ì–´ ìƒì„± ë¬¸ì„œì— ê¸°ìˆ ëœ ì›ì†Œ ì‚¬ì‹¤ë“¤(AtomicÂ facts)ì— ëŒ€í•œ ì‚¬ì‹¤ ê´€ê³„ë¥¼ ì„¤ëª…í•˜ëŠ” ê¸°ìˆ ì„ ì œê³µ
+* íŠ¹ì • ì–¸ì–´ ëª¨ë¸ì— ì œí•œë˜ì§€ ì•Šìœ¼ë©°(Model Agnostic), í‰ê°€ìš© ì–¸ì–´ëª¨ë¸ì„ êµì²´í•˜ì—¬ ëª¨ë¸ì˜ ì„±ëŠ¥ì„ í‰ê°€í•  ìˆ˜ ìžˆìŒ
+* í‰ê°€ë¥¼ ìœ„í•œ ë°ì´í„°ì…‹ ì œê³µ: ìƒì„±ëœ ë¬¸ì„œ, ì›ì†Œ ì‚¬ì‹¤(atomic facts)ë¡œ ë¶„í• ëœ ë¬¸ìž¥ë“¤ í¬í•¨
+* ì„±ëŠ¥ í‰ê°€ë¥¼ ìœ„í•œ ì •ë‹µ ë°ì´í„°(ground truth label)ì™€ í‰ê°€ ì½”ë“œë¥¼ í•¨ê»˜ ì œê³µ
 
-#### ¿ø¼Ò »ç½Ç(Atomic facts)
-* ÀÇ¹Ì: ¹®ÀåÀÇ ÇÙ½É ÀÇ¹Ì¸¦ ´ã°í ÀÖ´Â ÀÛÀº Á¤º¸ ´ÜÀ§
-* ¿¹½Ã: ´ÙÀ½ ¹®ÀåÀº 3°³ÀÇ ¿ø¼Ò »ç½Ç·Î ºÐÇØµÉ ¼ö ÀÖÀ½
-    * "È«ÀÎÇÑÀº Á¶¼± ÈÄ±âÀÇ ¹®ÀÎÀÌÀÚ Á¤Ä¡°¡ÀÌ´Ù."
-¡æ ["È«ÀÎÇÑÀº Á¶¼± ÈÄ±âÀÇ »ç¶÷ÀÌ´Ù.", "È«ÀÎÇÑÀº ¹®ÀÎÀÌ´Ù.", "È«ÀÎÇÑÀº Á¤Ä¡°¡ÀÌ´Ù."]
+    #### ì›ì†Œ ì‚¬ì‹¤(Atomic facts)
+    * ì˜ë¯¸: ë¬¸ìž¥ì˜ í•µì‹¬ ì˜ë¯¸ë¥¼ ë‹´ê³  ìžˆëŠ” ìž‘ì€ ì •ë³´ ë‹¨ìœ„
+    * ì˜ˆì‹œ: ë‹¤ìŒ ë¬¸ìž¥ì€ 3ê°œì˜ ì›ì†Œ ì‚¬ì‹¤ë¡œ ë¶„í•´ë  ìˆ˜ ìžˆìŒ
+        * "í™ì¸í•œì€ ì¡°ì„  í›„ê¸°ì˜ ë¬¸ì¸ì´ìž ì •ì¹˜ê°€ì´ë‹¤."
+â†’ ["í™ì¸í•œì€ ì¡°ì„  í›„ê¸°ì˜ ì‚¬ëžŒì´ë‹¤.", "í™ì¸í•œì€ ë¬¸ì¸ì´ë‹¤.", "í™ì¸í•œì€ ì •ì¹˜ê°€ì´ë‹¤."]
 <br>
 <br>
 
-## ±¸µ¿ È¯°æ ¼³Ä¡
+## êµ¬ë™ í™˜ê²½ ì„¤ì¹˜
 
-`conda` È¤Àº `virtualenv`¸¦ È°¿ëÇØ Python 3.9+ È¯°æÀ» ¼³Á¤ÇÏ¼¼¿ä. (google gemini API¸¦ »ç¿ëÇÏ·Á¸é Python 3.9 ÀÌ»óÀÌ ÇÊ¿äÇÕ´Ï´Ù.)
+`conda` í˜¹ì€ `virtualenv`ë¥¼ í™œìš©í•´ Python 3.9+ í™˜ê²½ì„ ì„¤ì •í•˜ì„¸ìš”. (google gemini APIë¥¼ ì‚¬ìš©í•˜ë ¤ë©´ Python 3.9 ì´ìƒì´ í•„ìš”í•©ë‹ˆë‹¤.)
 
-* ÇÊ¼ö ¼³Ä¡ ÆÐÅ°Áö´Â [requirements.txt](https://github.com/ETRI-XAINLP/KorFactScore/blob/master/requirements.txt)¸¦ È®ÀÎÇØº¸¼¼¿ä.
+* í•„ìˆ˜ ì„¤ì¹˜ íŒ¨í‚¤ì§€ëŠ” [requirements.txt](https://github.com/ETRI-XAINLP/KorFactScore/blob/master/requirements.txt)ë¥¼ í™•ì¸í•´ë³´ì„¸ìš”.
 
 ```bash
 conda create -n korfs-env python=3.9
@@ -40,26 +40,26 @@ cd KorFactscore
 pip install -r requirements.txt
 ```
 
-### Huggingface LLaMa model ´Ù¿î·Îµå ¹æ¹ý
+### Huggingface LLaMa model ë‹¤ìš´ë¡œë“œ ë°©ë²•
 
-1. huggingface¿¡ °¡ÀÔÇÑ ´ÙÀ½, User Access TokensÀ» ½ÅÃ»ÇÏ°í ¹Þ¾ÆµÓ´Ï´Ù.
-2. ÅÍ¹Ì³Î¿¡¼­ huggingface ·Î±×ÀÎÀ» ½ÇÇàÇÕ´Ï´Ù. (¿É¼Ç) `model_cache_dir`¿¡´Â ¸ðµ¨ÀÌ ´Ù¿î·Îµå µÇ¾î ¹Þ¾ÆÁú Æú´õÀÇ À§Ä¡¸¦ ¹Ì¸® ÁöÁ¤ÇØµÎ¸é µË´Ï´Ù.
+1. huggingfaceì— ê°€ìž…í•œ ë‹¤ìŒ, User Access Tokensì„ ì‹ ì²­í•˜ê³  ë°›ì•„ë‘¡ë‹ˆë‹¤.
+2. í„°ë¯¸ë„ì—ì„œ huggingface ë¡œê·¸ì¸ì„ ì‹¤í–‰í•©ë‹ˆë‹¤. (ì˜µì…˜) `model_cache_dir`ì—ëŠ” ëª¨ë¸ì´ ë‹¤ìš´ë¡œë“œ ë˜ì–´ ë°›ì•„ì§ˆ í´ë”ì˜ ìœ„ì¹˜ë¥¼ ë¯¸ë¦¬ ì§€ì •í•´ë‘ë©´ ë©ë‹ˆë‹¤.
 
 ```bash
 huggingface-cli login
 export HF_HOME={model_cache_dir} # optional
 ```
 
-3. `transformers`°¡ ¼³Ä¡µÈ env ¾Æ·¡¿¡¼­ huggingfaceÀÇ LLaMa ¸ðµ¨À» ´Ù¿î·Îµå ÇÕ´Ï´Ù. ÀÚ¼¼ÇÑ »çÇ×Àº [LLaMa È¨ÆäÀÌÁö](https://github.com/meta-llama/llama3)¸¦ Âü°íÇÏ¼¼¿ä.
+3. `transformers`ê°€ ì„¤ì¹˜ëœ env ì•„ëž˜ì—ì„œ huggingfaceì˜ LLaMa ëª¨ë¸ì„ ë‹¤ìš´ë¡œë“œ í•©ë‹ˆë‹¤. ìžì„¸í•œ ì‚¬í•­ì€ [LLaMa í™ˆíŽ˜ì´ì§€](https://github.com/meta-llama/llama3)ë¥¼ ì°¸ê³ í•˜ì„¸ìš”.
 
-### ÇÏµå¿þ¾î Á¦ÇÑ»çÇ×
+### í•˜ë“œì›¨ì–´ ì œí•œì‚¬í•­
 
-* Æò°¡¿ë ¾ð¾î¸ðµ¨À» ±¸µ¿ÇÒ ¼ö ÀÖ¾î¾ß ÇÕ´Ï´Ù. (Æò°¡¿ë ¾ð¾î¸ðµ¨ ¿¹½Ã: ChatGPT API, Gemini API, LLaMa-2, LLaMa-3, LLaMa-3.1 µî)
+* í‰ê°€ìš© ì–¸ì–´ëª¨ë¸ì˜ êµ¬ë™ ì œí•œ ì‚¬í•­ì„ ë”°ë¦…ë‹ˆë‹¤. (í‰ê°€ìš© ì–¸ì–´ëª¨ë¸ ì˜ˆì‹œ: ChatGPT API, Gemini API, LLaMa-2, LLaMa-3, LLaMa-3.1 ë“±)
 
 <br>
 <br>
 
-## KorFactScore ½ÇÇà ¹æ¹ý
+## KorFactScore ì‹¤í–‰ ë°©ë²•
 
 ```bash
 python -m factscore.factscorer \
@@ -70,62 +70,62 @@ python -m factscore.factscorer \
     --api_key {api_keys}
 ```
 
-* `--input_path` ´Â `data/k_unlabeled/gen_bio-gpt_4-kr-all.jsonl`¿Í °°Àº Çü½ÄÀÔ´Ï´Ù. `jsonlines` formatÀ¸·Î °¢ ¶óÀÎ º°·Î `topic`°ú `output` (¸ðµ¨ÀÌ »ý¼ºÇÑ °á°ú)À» Æ÷ÇÔÇÕ´Ï´Ù.
-* `--data_dir`: °Ë»ö±â¿¡ »ç¿ëµÉ knowledge sourceÀÇ µð·ºÅä¸® (Default ¼³Á¤: `.cache/factscore`)
-* `--cache_dir`: ÇÁ·Î±×·¥ ½ÇÇà °á°ú°ªÀÌ ÀúÀåµÇ´Â µð·ºÅä¸® (Default ¼³Á¤: `.cache/factscore`)
-* `--af_model_name`: atomic facts¸¦ »ý¼ºÇÒ ¶§ »ç¿ëµÉ ¸ðµ¨ ÀÌ¸§À» ³Ö½À´Ï´Ù. `gpt-3.5-turbo-0125`, `gpt-4-0125-preview` È¤Àº `gemini-1.0-pro` µîÀÌ °¡´ÉÇÕ´Ï´Ù.
-* `--model_name_or_path`: atomic facts¸¦ °ËÁõÇÏ´Â °ËÁõ ¸ðµ¨ÀÇ ÀÌ¸§ È¤Àº À§Ä¡¸¦ ³Ö½À´Ï´Ù. af_model_name°ú ¸¶Âù°¡Áö·Î `gpt-3.5-turbo-0125`, `gpt-4-0125-preview` È¤Àº `gemini-1.0-pro` È¤Àº `meta-llama/llama-2-` µîÀÌ °¡´ÉÇÕ´Ï´Ù.
-* `--api_key`: OpenAI API Key ¶Ç´Â Google Gemini API Key¸¦ Æ÷ÇÔÇÏ´Â ÆÄÀÏÀÇ ÀÌ¸§ÀÔ´Ï´Ù. »ç¿ëÇÒ APIÀÇ °³ÀÎ key °ªÀ» ³Ö¾îµÎ¼¼¿ä. (¾Æ·¡ ¿¹½Ã)
+* `--input_path` ëŠ” `data/k_unlabeled/gen_bio-gpt_4-kr-all.jsonl`ì™€ ê°™ì€ í˜•ì‹ìž…ë‹ˆë‹¤. `jsonlines` formatìœ¼ë¡œ ê° ë¼ì¸ ë³„ë¡œ `topic`ê³¼ `output` (ëª¨ë¸ì´ ìƒì„±í•œ ê²°ê³¼)ì„ í¬í•¨í•©ë‹ˆë‹¤.
+* `--data_dir`: ê²€ìƒ‰ê¸°ì— ì‚¬ìš©ë  knowledge sourceì˜ ë””ë ‰í† ë¦¬ (Default ì„¤ì •: `.cache/factscore`)
+* `--cache_dir`: í”„ë¡œê·¸ëž¨ ì‹¤í–‰ ê²°ê³¼ê°’ì´ ì €ìž¥ë˜ëŠ” ë””ë ‰í† ë¦¬ (Default ì„¤ì •: `.cache/factscore`)
+* `--af_model_name`: atomic factsë¥¼ ìƒì„±í•  ë•Œ ì‚¬ìš©ë  ëª¨ë¸ ì´ë¦„ì„ ë„£ìŠµë‹ˆë‹¤. `gpt-3.5-turbo-0125`, `gpt-4-0125-preview` í˜¹ì€ `gemini-1.0-pro` ë“±ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+* `--model_name_or_path`: atomic factsë¥¼ ê²€ì¦í•˜ëŠ” ê²€ì¦ ëª¨ë¸ì˜ ì´ë¦„ í˜¹ì€ ìœ„ì¹˜ë¥¼ ë„£ìŠµë‹ˆë‹¤. af_model_nameê³¼ ë§ˆì°¬ê°€ì§€ë¡œ `gpt-3.5-turbo-0125`, `gpt-4-0125-preview` í˜¹ì€ `gemini-1.0-pro` í˜¹ì€ `meta-llama/llama-2-` ë“±ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+* `--api_key`: OpenAI API Key ë˜ëŠ” Google Gemini API Keyë¥¼ í¬í•¨í•˜ëŠ” íŒŒì¼ì˜ ì´ë¦„ìž…ë‹ˆë‹¤. ì‚¬ìš©í•  APIì˜ ê°œì¸ key ê°’ì„ ë„£ì–´ë‘ì„¸ìš”. (ì•„ëž˜ ì˜ˆì‹œ)
 
     ```txt
     openai=abcdefg
     gemini=xyjklmn
     ```
 
-\*\* »ç¿ëÇÏ´Â ¸ðµ¨¿¡ µû¶ó API »ç¿ë ºñ¿ëÀÌ Ã»±¸µÉ ¼ö ÀÖ½À´Ï´Ù.
+\*\* ì‚¬ìš©í•˜ëŠ” ëª¨ë¸ì— ë”°ë¼ API ì‚¬ìš© ë¹„ìš©ì´ ì²­êµ¬ë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 
 **Optional flags**:
 
-* `--use_atomic_facts`: ÀÌ flag Àû¿ë½Ã, atomic fact generator¸¦ »ç¿ëÇÏÁö ¾Ê°í ¹Ì¸® »ý¼ºµÈ atomic facts¸¦ °¡Á®¿Í¼­ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù. ÀÌ °æ¿ì `input_path`´Â atomic facts¸¦ Æ÷ÇÔÇÏ°í ÀÖ´Â ÀÔ·Â ÆÄÀÏÀÌ¾î¾ß ÇÕ´Ï´Ù. Á¦°øµÈ `data/k_labeled/gen_bio-gpt_4-{kr/fr}-all.jsonl` ÆÄÀÏÀº gpt-4·Î »ý¼ºµÈ atomic-facts¸¦ Æ÷ÇÔÇÏ°í ÀÖ½À´Ï´Ù. (¾Æ·¡ ½ÇÇè °á°ú¸¦ ÀçÇöÇÒ ¶§ »ç¿ëµË´Ï´Ù.)
-* `--knowledge_source`: ±âº»ÀûÀ¸·Î kowiki-20240301.db·Î ¼³Á¤µÇ¾î ÀÖ½À´Ï´Ù. (ÇÑ±¹¾î Wikipedia - 2024/03/01).
+* `--use_atomic_facts`: ì´ flag ì ìš©ì‹œ, atomic fact generatorë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê³  ë¯¸ë¦¬ ìƒì„±ëœ atomic factsë¥¼ ê°€ì ¸ì™€ì„œ ì‚¬ìš©í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì´ ê²½ìš° `input_path`ëŠ” atomic factsë¥¼ í¬í•¨í•˜ê³  ìžˆëŠ” ìž…ë ¥ íŒŒì¼ì´ì–´ì•¼ í•©ë‹ˆë‹¤. ì œê³µëœ `data/k_labeled/gen_bio-gpt_4-{kr/fr}-all.jsonl` íŒŒì¼ì€ gpt-4ë¡œ ìƒì„±ëœ atomic-factsë¥¼ í¬í•¨í•˜ê³  ìžˆìŠµë‹ˆë‹¤. (ì•„ëž˜ ì‹¤í—˜ ê²°ê³¼ë¥¼ ìž¬í˜„í•  ë•Œ ì‚¬ìš©ë©ë‹ˆë‹¤.)
+* `--knowledge_source`: ê¸°ë³¸ì ìœ¼ë¡œ kowiki-20240301.dbë¡œ ì„¤ì •ë˜ì–´ ìžˆìŠµë‹ˆë‹¤. (í•œêµ­ì–´ Wikipedia - 2024/03/01).
 
-<!--°³ÀÎ DB¸¦ Àû¿ëÇÏ°í ½Í´Ù¸é [¾Æ·¡ ¼³Á¤](#To-use-a-custom-knowledge-source) ¹æ¹ýÀ» Âü°íÇÏ¼¼¿ä. ±×¸®°í db ÀÌ¸§À» ÀÌ flag¿¡ ³Ö¾îÁÖ¼¼¿ä. -->
+<!--ê°œì¸ DBë¥¼ ì ìš©í•˜ê³  ì‹¶ë‹¤ë©´ [ì•„ëž˜ ì„¤ì •](#To-use-a-custom-knowledge-source) ë°©ë²•ì„ ì°¸ê³ í•˜ì„¸ìš”. ê·¸ë¦¬ê³  db ì´ë¦„ì„ ì´ flagì— ë„£ì–´ì£¼ì„¸ìš”. -->
 
 <br>
 <br>
 
-## ½ÇÇè¿ë µ¥ÀÌÅÍ
+## ì‹¤í—˜ìš© ë°ì´í„°
 
-* ÀÎ¹°ÀÇ ¾à·ÂÀ» GPT-4·Î »ý¼ºÇÑ ¹®¼­µé·Î ÀÌ·ç¾îÁø µ¥ÀÌÅÍ¼Â
-    * À§Ä¡:
+* ì¸ë¬¼ì˜ ì•½ë ¥ì„ GPT-4ë¡œ ìƒì„±í•œ ë¬¸ì„œë“¤ë¡œ ì´ë£¨ì–´ì§„ ë°ì´í„°ì…‹
+    * ìœ„ì¹˜:
         * data/k_unlabeled/
-            (atomic facts ºÒÆ÷ÇÔ)
-    * ÆÄÀÏÀÌ¸§:
+            (atomic facts ë¶ˆí¬í•¨)
+    * íŒŒì¼ì´ë¦„:
         * gen_bio-gpt_4-kr-all.jsonl
         * gen_bio-gpt_4-fr-all.jsonl
+</br>
 
-    | µ¥ÀÌÅÍ | ¹®¼­ ¼ö |
+    | ë°ì´í„° | ë¬¸ì„œ ìˆ˜ |
     | --- | ---- |
-    | ÇÑ±¹ÀÎ ¾à·Â | 64 |
-    | ¿Ü±¹ÀÎ ¾à·Â | 50 |
+    | í•œêµ­ì¸ ì•½ë ¥ | 64 |
+    | ì™¸êµ­ì¸ ì•½ë ¥ | 50 |
 
 <br>
-<br>
 
-## ¼º´É Æò°¡ °á°ú
+## ì„±ëŠ¥ í‰ê°€ ê²°ê³¼
 
-### ¼º´É Æò°¡¿ë µ¥ÀÌÅÍ
+### ì„±ëŠ¥ í‰ê°€ìš© ë°ì´í„°
 
-* ½ÇÇè¿ë µ¥ÀÌÅÍ¿¡ atomic facts ºÐÇÒ °á°ú¸¦ Ãß°¡ÇÑ µ¥ÀÌÅÍ¼Â.
-    Atomic facts »ý¼º¿¡ »ç¿ëµÈ ¸ðµ¨Àº gpt-4-turbo ÀÔ´Ï´Ù.
-    * À§Ä¡:
+* ì‹¤í—˜ìš© ë°ì´í„°ì— atomic facts ë¶„í•  ê²°ê³¼ë¥¼ ì¶”ê°€í•œ ë°ì´í„°ì…‹.
+    Atomic facts ìƒì„±ì— ì‚¬ìš©ëœ ëª¨ë¸ì€ gpt-4-turbo ìž…ë‹ˆë‹¤.
+    * ìœ„ì¹˜:
         * data/k_labeled/
-            (atomic facts Æ÷ÇÔ)
-    * ÆÄÀÏÀÌ¸§:
+            (atomic facts í¬í•¨)
+    * íŒŒì¼ì´ë¦„:
         * gen_bio-gpt_4-kr-all.jsonl
         * gen_bio-gpt_4-fr-all.jsonl
 
-### °ËÁõ±â¿¡ »ç¿ëµÈ ¸ðµ¨
+### ê²€ì¦ê¸°ì— ì‚¬ìš©ëœ ëª¨ë¸
 
 * OpenAI Models
     * gpt-3.5-turbo-0125
@@ -140,10 +140,10 @@ python -m factscore.factscorer \
 * Others
     * LGAI-EXAONE/EXAONE-3.0-7.8B-Instruct
 
-### SystemÀÇ »ç½ÇÆÇ´Ü ¼º´É °è»ê ¹æ¹ý
+### Systemì˜ ì‚¬ì‹¤íŒë‹¨ ì„±ëŠ¥ ê³„ì‚° ë°©ë²•
 
-Á¤´ä(ground truth)°ú systemÀÇ °á°ú »çÀÌÀÇ ÀÏÄ¡ÇÏ´Â Á¤µµ¸¦ °è»êÇÏ¿© Æò°¡ÇÔ
-* Á¤´ä ÆÄÀÏÀ§Ä¡ ¹× ÀÌ¸§:
+ì •ë‹µ(ground truth)ê³¼ systemì˜ ê²°ê³¼ ì‚¬ì´ì˜ ì¼ì¹˜í•˜ëŠ” ì •ë„ë¥¼ ê³„ì‚°í•˜ì—¬ í‰ê°€í•¨
+* ì •ë‹µ íŒŒì¼ìœ„ì¹˜ ë° ì´ë¦„:
     * data/k_truth_annotations/gen_bio-gpt_4-kr-all-gold.jsonl
     * data/k_truth_annotations/gen_bio-gpt_4-fr-all-gold.jsonl
 
@@ -154,16 +154,16 @@ system_decisions_data='cache/gpt_4-kr-all/4_af_decisions_bm25_k5.jsonl'
 python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system_decisions_data}
 ```
 
-* °Ë»ö±â: BM25
+* ê²€ìƒ‰ê¸°: BM25
 </br>
 
 ----
-\* ¾Æ·¡ ½ÇÇè °á°ú´Â [KorFactScore ½ÇÇà ¹æ¹ý](#korfactscore-½ÇÇà-¹æ¹ý)À» ÅëÇØ ÀçÇö °¡´ÉÇÕ´Ï´Ù.
-### °á°ú (1) SystemÀÇ »ç½ÇÆÇ´Ü ¼º´É
+\* ì•„ëž˜ ì‹¤í—˜ ê²°ê³¼ëŠ” [KorFactScore ì‹¤í–‰ ë°©ë²•](#korfactscore-ì‹¤í–‰-ë°©ë²•)ì„ í†µí•´ ìž¬í˜„ ê°€ëŠ¥í•©ë‹ˆë‹¤.
+### ê²°ê³¼ (1) Systemì˜ ì‚¬ì‹¤íŒë‹¨ ì„±ëŠ¥
 
-* `SystemÀÇ »ç½ÇÆÇ´Ü ¼º´É`Àº System °á°ú¿Í Á¤´ä(ground truth)ÀÇ ÀÏÄ¡µÈ Á¤µµ¸¦ º¸¿©ÁÝ´Ï´Ù(´ÜÀ§: %).
+* `Systemì˜ ì‚¬ì‹¤íŒë‹¨ ì„±ëŠ¥`ì€ System ê²°ê³¼ì™€ ì •ë‹µ(ground truth)ì˜ ì¼ì¹˜ëœ ì •ë„ë¥¼ ë³´ì—¬ì¤ë‹ˆë‹¤(ë‹¨ìœ„: %).
 
-| Model | Size | ÇÑ±¹ÀÎ <br> BM25 |  Cross-Encoder | ¿Ü±¹ÀÎ <br> BM25 |  Cross-Encoder |
+| Model | Size | í•œêµ­ì¸ <br> BM25 |  Cross-Encoder | ì™¸êµ­ì¸ <br> BM25 |  Cross-Encoder |
 | ----- | ---- | --------- | -------------- | --------- | -------------- |
 | GPT-3.5 | - | 82.4 | 85.4 | 75.1 | 77.2 |
 | GPT-4 | - | **92.4** | <span style="color:#e11d21;">**94.2**</span> | **91.6** | <span style="color:#e11d21;">**92.8**</span> |
@@ -178,14 +178,14 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 | LLaMa-3.1-Instruct | 8B | 78.6 | 82.0 | 69.6 | 70.9 |
 |  | 70B | 89.7 | 90.3 | 89.9 | 90.2 |
 
-\* `Cross-Encoder`´Â ETRI ³»ºÎ ±â¼ú·Î °³¹ßµÈ °Ë»ö±â·Î¼­ ±â¼úÀÌÀüÀ» ÅëÇØ »ç¿ëÀÌ °¡´ÉÇÕ´Ï´Ù.
+\* `Cross-Encoder`ëŠ” ETRI ë‚´ë¶€ ê¸°ìˆ ë¡œ ê°œë°œëœ ê²€ìƒ‰ê¸°ë¡œì„œ ê¸°ìˆ ì´ì „ì„ í†µí•´ ì‚¬ìš©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.
 
-### °á°ú (2) »ý¼º¹®¼­ÀÇ »ç½Ç¼º Á¡¼ö (FactScore)
+### ê²°ê³¼ (2) ìƒì„±ë¬¸ì„œì˜ ì‚¬ì‹¤ì„± ì ìˆ˜ (FactScore)
 
-* `»ý¼º¹®¼­ÀÇ »ç½Ç¼º Á¡¼ö`´Â ÀÔ·ÂµÈ ¹®¼­ÀÇ ¿ø¼Ò »ç½Çµé(atomic facts)¿¡ ´ëÇØ systemÀÌ Æò°¡ÇÑ »ç½Ç¼º Á¡¼ö, Áï FactScoreÀÔ´Ï´Ù(´ÜÀ§: %).
-    (Ground truthÀÇ »ç½Ç¼º Á¡¼ö´Â ÇÑ±¹ÀÎ ´ë»ó 46.8, ¿Ü±¹ÀÎ ´ë»ó 80.1 ÀÔ´Ï´Ù.)
+* `ìƒì„±ë¬¸ì„œì˜ ì‚¬ì‹¤ì„± ì ìˆ˜`ëŠ” ìž…ë ¥ëœ ë¬¸ì„œì˜ ì›ì†Œ ì‚¬ì‹¤ë“¤(atomic facts)ì— ëŒ€í•´ systemì´ í‰ê°€í•œ ì‚¬ì‹¤ì„± ì ìˆ˜, ì¦‰ FactScoreìž…ë‹ˆë‹¤(ë‹¨ìœ„: %).
+    (Ground truthì˜ ì‚¬ì‹¤ì„± ì ìˆ˜ëŠ” í•œêµ­ì¸ ëŒ€ìƒ 46.8, ì™¸êµ­ì¸ ëŒ€ìƒ 80.1 ìž…ë‹ˆë‹¤.)
 
-| Model | Size | ÇÑ±¹ÀÎ <br> BM25 |  Cross-Encoder | ¿Ü±¹ÀÎ <br> BM25 |  Cross-Encoder |
+| Model | Size | í•œêµ­ì¸ <br> BM25 |  Cross-Encoder | ì™¸êµ­ì¸ <br> BM25 |  Cross-Encoder |
 | ----- | ---- | --------- | -------------- | --------- | -------------- |
 | GPT-3.5 | - | 45.3 | 47.4 | 62.9 | 65.4 |
 | GPT-4 | - | 53.8 | 53.1 | 79.6 | 81.1 |
@@ -200,14 +200,25 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 | LLaMa-3.1-Instruct | 8B | 27.9 | 31.1 | 52.8 | 54.6 |
 |  | 70B | 54.7 | 54.5 | 82.0 | 82.7 |
 
-<!-- Á¦¿Ü? ### Á¦ÇÑ»çÇ× 
-* °ËÁõÀ» À§ÇÑ Áö½Äº£ÀÌ½º°¡ ÇöÀç´Â À§Å°¹é°ú·Î ÇÑÁ¤µÊ. µ¿ÀÏÇÑ Æ÷¸ËÀÇ Áö½Äº£ÀÌ½º¸¦ Á¦°øÇÒ °æ¿ì È®Àå °¡´É. -->
-
-## Citation
-
-* ÇÑ±¹¾î »ý¼º ¹®¼­ÀÇ ¿ø¼Ò »ç½Ç °ü°è¿¡ ´ëÇÑ ¼³¸í ±â¼ú [Online] [https://github.com/ETRI-XAINLP/KorFactScore](https://github.com/ETRI-XAINLP/KorFactScore)
-* **[Funding]** (4¼¼ºÎ) Àü¹®Áö½Ä ´ë»ó ÆÇ´Ü°á°úÀÇ ÀÌÀ¯/±Ù°Å¸¦ ¼³¸í°¡´ÉÇÑ Àü¹®°¡ ÀÇ»ç°áÁ¤ Áö¿ø ÀÎ°øÁö´É ±â¼ú °³¹ß
-    * »ç¶÷Áß½ÉÀÎ°øÁö´ÉÇÙ½É ¿øÃµ±â¼ú°³¹ß »ç¾÷ > »ç¿ëÀÚ ¸ÂÃãÇü ÇÃ·¯±×¾ØÇÃ·¹ÀÌ ¹æ½ÄÀÇ ¼³¸í°¡´É¼º Á¦°ø ±â¼ú °³¹ß
-        \(°úÇÐ±â¼úÁ¤º¸Åë½ÅºÎ Àç¿ø \| Á¤º¸Åë½Å±âÈ¹Æò°¡¿ø Áö¿ø\)
+<!-- ì œì™¸? ### ì œí•œì‚¬í•­ 
+* ê²€ì¦ì„ ìœ„í•œ ì§€ì‹ë² ì´ìŠ¤ê°€ í˜„ìž¬ëŠ” ìœ„í‚¤ë°±ê³¼ë¡œ í•œì •ë¨. ë™ì¼í•œ í¬ë§·ì˜ ì§€ì‹ë² ì´ìŠ¤ë¥¼ ì œê³µí•  ê²½ìš° í™•ìž¥ ê°€ëŠ¥. -->
 
 </br>
+</br>
+</br>
+
+#### (ì´ íŒ¨í‚¤ì§€ëŠ” ì˜ì–´ ìƒì„± ë¬¸ì„œì— ëŒ€í•œ ì›ì†Œ ì‚¬ì‹¤ì„± í‰ê°€ ê¸°ìˆ ì¸ [FActScore](https://github.com/shmsw25/FActScore)ë¥¼ ê¸°ë°˜ìœ¼ë¡œ ê°œë°œë˜ì—ˆìŠµë‹ˆë‹¤.)
+
+</br>
+
+## Citation 
+ì´ íŒ¨í‚¤ì§€ë¥¼ ì—°êµ¬ì— í™œìš©í•  ê²½ìš° ì•„ëž˜ì™€ ê°™ì´ ì¸ìš©í•´ì£¼ì„¸ìš”
+
+* ë…¸ì§€í˜„*, ê¹€ë¯¼í˜¸*, ë°°ìš©ì§„, ê¹€í˜„ê¸°, ì´í˜•ì§, ìž¥ëª…ê¸¸, ë°°ê²½ë§Œ, "í•œêµ­ì–´ ìƒì„± ë¬¸ì„œì˜ ì›ì†Œ ì‚¬ì‹¤ ê´€ê³„ì— ëŒ€í•œ ì„¤ëª… ê¸°ìˆ ," [Online] [https://github.com/ETRI-XAINLP/KorFactScore](https://github.com/ETRI-XAINLP/KorFactScore), 2024
+
+</br>
+</br>
+
+**[Funding]** (4ì„¸ë¶€) ì „ë¬¸ì§€ì‹ ëŒ€ìƒ íŒë‹¨ê²°ê³¼ì˜ ì´ìœ /ê·¼ê±°ë¥¼ ì„¤ëª…ê°€ëŠ¥í•œ ì „ë¬¸ê°€ ì˜ì‚¬ê²°ì • ì§€ì› ì¸ê³µì§€ëŠ¥ ê¸°ìˆ  ê°œë°œ
+    * ì‚¬ëžŒì¤‘ì‹¬ì¸ê³µì§€ëŠ¥í•µì‹¬ ì›ì²œê¸°ìˆ ê°œë°œ ì‚¬ì—… > ì‚¬ìš©ìž ë§žì¶¤í˜• í”ŒëŸ¬ê·¸ì•¤í”Œë ˆì´ ë°©ì‹ì˜ ì„¤ëª…ê°€ëŠ¥ì„± ì œê³µ ê¸°ìˆ  ê°œë°œ
+        \(ê³¼í•™ê¸°ìˆ ì •ë³´í†µì‹ ë¶€ ìž¬ì› \| ì •ë³´í†µì‹ ê¸°íší‰ê°€ì› ì§€ì›\)
