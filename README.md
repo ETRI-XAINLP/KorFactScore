@@ -102,15 +102,14 @@ python -m factscore.factscorer \
             (atomic facts 불포함)
     * 파일이름:
         * gen_bio-gpt_4-kr-all.jsonl
-        * gen_bio-gpt_4-fr-all.jsonl
-</br>
+        * gen_bio-gpt_4-fr-all.jsonl 
+
 
     | 데이터 | 문서 수 |
-    | --- | ---- |
+    | ----- | ----- |
     | 한국인 약력 | 64 |
     | 외국인 약력 | 50 |
 
-<br>
 
 ## 성능 평가 결과
 
