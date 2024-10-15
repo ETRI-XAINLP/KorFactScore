@@ -22,8 +22,9 @@ KorFactScore (Korean Factual precision in atomicity Score)
     * 예시: 다음 문장은 3개의 원소 사실로 분해될 수 있음
         * "홍인한은 조선 후기의 문인이자 정치가이다."
 → ["홍인한은 조선 후기의 사람이다.", "홍인한은 문인이다.", "홍인한은 정치가이다."]
-<br>
-<br>
+
+<br/>
+<br/>
 
 ## 구동 환경 설치
 
@@ -56,8 +57,8 @@ export HF_HOME={model_cache_dir} # optional
 
 * 평가용 언어모델의 구동 제한 사항을 따릅니다. (평가용 언어모델 예시: ChatGPT API, Gemini API, LLaMa-2, LLaMa-3, LLaMa-3.1 등)
 
-<br>
-<br>
+<br/>
+<br/>
 
 ## KorFactScore 실행 방법
 
@@ -70,7 +71,7 @@ python -m factscore.factscorer \
     --api_key {api_keys}
 ```
 
-* `--input_path` 는 `data/k_unlabeled/gen_bio-gpt_4-kr-all.jsonl`와 같은 형식입니다. `jsonlines` format으로 각 라인 별로 `topic`과 `output` (모델이 생성한 결과)을 포함합니다.
+* `--input_path` 는 `data/k_unlabeled/gen_bio-gpt_4-kr-all.jsonl`와 같은 형식입니다. `jsonlines` format으로 각 라인 별로 `topic`과 `output` (모델이 생성한 결과)을 포함합니다. 현재 검증용 지식베이스가 (한국어)위키백과이기 때문에, topic은 위키백과의 표제어로 제한됩니다.
 * `--data_dir`: 검색기에 사용될 knowledge source의 디렉토리 (Default 설정: `.cache/factscore`)
 * `--cache_dir`: 프로그램 실행 결과값이 저장되는 디렉토리 (Default 설정: `.cache/factscore`)
 * `--af_model_name`: atomic facts를 생성할 때 사용될 모델 이름을 넣습니다. `gpt-3.5-turbo-0125`, `gpt-4-0125-preview` 혹은 `gemini-1.0-pro` 등이 가능합니다.
@@ -91,8 +92,8 @@ python -m factscore.factscorer \
 
 <!--개인 DB를 적용하고 싶다면 [아래 설정](#To-use-a-custom-knowledge-source) 방법을 참고하세요. 그리고 db 이름을 이 flag에 넣어주세요. -->
 
-<br>
-<br>
+<br/>
+<br/>
 
 ## 실험용 데이터
 
@@ -103,14 +104,16 @@ python -m factscore.factscorer \
     * 파일이름:
         * gen_bio-gpt_4-kr-all.jsonl
         * gen_bio-gpt_4-fr-all.jsonl
-</br>
+<br/>
+<br/>
+
 
     | 데이터 | 문서 수 |
     | --- | ---- |
     | 한국인 약력 | 64 |
     | 외국인 약력 | 50 |
 
-<br>
+<br/>
 
 ## 성능 평가 결과
 
@@ -155,7 +158,7 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 ```
 
 * 검색기: BM25
-</br>
+<br/>
 
 ----
 \* 아래 실험 결과는 [KorFactScore 실행 방법](#korfactscore-실행-방법)을 통해 재현 가능합니다.
@@ -163,7 +166,7 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 
 * `System의 사실판단 성능`은 System 결과와 정답(ground truth)의 일치된 정도를 보여줍니다(단위: %).
 
-| Model | Size | 한국인 <br> BM25 |  Cross-Encoder | 외국인 <br> BM25 |  Cross-Encoder |
+| Model | Size | 한국인 <br/> BM25 |  Cross-Encoder | 외국인 <br/> BM25 |  Cross-Encoder |
 | ----- | ---- | --------- | -------------- | --------- | -------------- |
 | GPT-3.5 | - | 82.4 | 85.4 | 75.1 | 77.2 |
 | GPT-4 | - | **92.4** | <span style="color:#e11d21;">**94.2**</span> | **91.6** | <span style="color:#e11d21;">**92.8**</span> |
@@ -185,7 +188,7 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 * `생성문서의 사실성 점수`는 입력된 문서의 원소 사실들(atomic facts)에 대해 system이 평가한 사실성 점수, 즉 FactScore입니다(단위: %).
     (Ground truth의 사실성 점수는 한국인 대상 46.8, 외국인 대상 80.1 입니다.)
 
-| Model | Size | 한국인 <br> BM25 |  Cross-Encoder | 외국인 <br> BM25 |  Cross-Encoder |
+| Model | Size | 한국인 <br/> BM25 |  Cross-Encoder | 외국인 <br/> BM25 |  Cross-Encoder |
 | ----- | ---- | --------- | -------------- | --------- | -------------- |
 | GPT-3.5 | - | 45.3 | 47.4 | 62.9 | 65.4 |
 | GPT-4 | - | 53.8 | 53.1 | 79.6 | 81.1 |
@@ -203,22 +206,21 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 <!-- 제외? ### 제한사항 
 * 검증을 위한 지식베이스가 현재는 위키백과로 한정됨. 동일한 포맷의 지식베이스를 제공할 경우 확장 가능. -->
 
-</br>
-</br>
-</br>
+<br/>
+<br/>
 
 #### (이 패키지는 영어 생성 문서에 대한 원소 사실성 평가 기술인 [FActScore](https://github.com/shmsw25/FActScore)를 기반으로 개발되었습니다.)
 
-</br>
+<br/>
 
 ## Citation 
-이 패키지를 연구에 활용할 경우 아래와 같이 인용해주세요
+이 패키지를 연구에 활용할 경우 아래와 같이 인용해주세요.
 
 * 노지현*, 김민호*, 배용진, 김현기, 이형직, 장명길, 배경만, "한국어 생성 문서의 원소 사실 관계에 대한 설명 기술," [Online] [https://github.com/ETRI-XAINLP/KorFactScore](https://github.com/ETRI-XAINLP/KorFactScore), 2024
 
-</br>
-</br>
+<br/>
+<br/>
 
-**[Funding]** (4세부) 전문지식 대상 판단결과의 이유/근거를 설명가능한 전문가 의사결정 지원 인공지능 기술 개발
-    * 사람중심인공지능핵심 원천기술개발 사업 > 사용자 맞춤형 플러그앤플레이 방식의 설명가능성 제공 기술 개발
+**[Funding]** <br/>
+사람중심인공지능핵심 원천기술개발 사업 > 사용자 맞춤형 플러그앤플레이 방식의 설명가능성 제공 기술 개발 > (4세부) 전문지식 대상 판단결과의 이유/근거를 설명가능한 전문가 의사결정 지원 인공지능 기술 개발 
         \(과학기술정보통신부 재원 \| 정보통신기획평가원 지원\)
