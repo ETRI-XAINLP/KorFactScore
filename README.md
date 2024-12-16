@@ -1,25 +1,25 @@
-# 한국어 생성 문서의 원소 사실 기반 사실 관계 설명 기술
+# 한국어 생성 문서의 단일사실관계를 검증하고 설명하는 기술 <br> KorFactScore (Korean Factual precision in atomicity Score)
 
-KorFactScore (Korean Factual precision in atomicity Score)
+### (한국어 생성 문서의 사실성 검증 및 한국어 언어모델 사실성 생성/판단 능력 평가)
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 
 ### 개발 배경
 
 * 인공지능(AI)이 생성한 문서 내 정보가 신뢰할 수 있는 지에 대한 추가적인 검증이 필요함.
-* 생성된 한국어 문서에 대해 원소 단위로 사실 관계를 검증하고 설명할 수 있는 도구가 부재함.
+* 생성된 한국어 문서에 대해 개별 정보 단위로 사실 관계를 검증하고 설명할 수 있는 도구가 부재함.
 * 특히, 최근 다양한 한국어 AI 언어 모델들로 대량의 문서들을 생성하고 있는 상황에서 이러한 기술의 필요성이 더욱 강조되고 있음.
 
 ### 주요 특징
 
-* 한국어 생성 문서에 기술된 원소 사실들(Atomic facts)에 대한 사실 관계를 설명하는 기술을 제공
-* 특정 언어 모델에 제한되지 않으며(Model Agnostic), 평가용 언어모델을 교체하여 모델의 성능을 평가할 수 있음
-* 평가를 위한 데이터셋 제공: 생성된 문서, 원소 사실(atomic facts)로 분할된 문장들 포함
+* 한국어 생성 문서에 기술된 단일사실들(또는 원소사실, Atomic facts)에 대한 사실관계를 검증하고 설명하는 기술을 제공
+* 특정 언어 모델에 제한되지 않으며(Model Agnostic), 평가용 언어모델을 교체하여 다양한 언어모델의 사실판단 능력을 평가할 수 있음
+* 평가를 위한 데이터셋 제공: 생성된 문서, 단일 사실(atomic facts)로 분할된 문장들 포함
 * 성능 평가를 위한 정답 데이터(ground truth label)와 평가 코드를 함께 제공
 
-    #### 원소 사실(Atomic facts)
+    #### 단일 사실(Atomic facts)
     * 의미: 개별 의미를 담고 있는 작은 정보 단위
-    * 예시: 다음 문장은 3개의 원소 사실로 분해될 수 있음
+    * 예시: 다음 문장은 3개의 단일 사실로 분해될 수 있음
         * "홍인한은 조선 후기의 문인이자 정치가이다."
 → ["홍인한은 조선 후기의 사람이다.", "홍인한은 문인이다.", "홍인한은 정치가이다."]
 
@@ -104,8 +104,6 @@ python -m factscore.factscorer \
     * 파일이름:
         * gen_bio-gpt_4-kr-all.jsonl
         * gen_bio-gpt_4-fr-all.jsonl
-<br/>
-<br/>
 
 
     | 데이터 | 문서 수 |
@@ -185,7 +183,7 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 
 ### 결과 (2) 생성문서의 사실성 점수 (FactScore)
 
-* `생성문서의 사실성 점수`는 입력된 문서의 원소 사실들(atomic facts)에 대해 system이 평가한 사실성 점수, 즉 FactScore입니다(단위: %).
+* `생성문서의 사실성 점수`는 입력된 문서의 단일 사실들(atomic facts)에 대해 system이 평가한 사실성 점수, 즉 FactScore입니다(단위: %).
     (Ground truth의 사실성 점수는 한국인 대상 46.8, 외국인 대상 80.1 입니다.)
 
 | Model | Size | 한국인 <br/> BM25 |  Cross-Encoder | 외국인 <br/> BM25 |  Cross-Encoder |
@@ -209,14 +207,14 @@ python factscore/evaluate_system_vs_human_judgments ${human_judge_data} ${system
 <br/>
 <br/>
 
-#### (이 패키지는 영어 생성 문서에 대한 원소 사실성 평가 기술인 [FActScore](https://github.com/shmsw25/FActScore)를 기반으로 개발되었습니다.)
+#### (이 패키지는 영어 생성 문서에 대한 단일 사실성 평가 기술인 [FActScore](https://github.com/shmsw25/FActScore)를 기반으로 개발되었습니다.)
 
 <br/>
 
 ## Citation 
 이 패키지를 연구에 활용할 경우 아래와 같이 인용해주세요.
 
-* 노지현*, 김민호*, 배용진, 김현기, 이형직, 장명길, 배경만, "한국어 생성 문서의 원소 사실 관계에 대한 설명 기술," [Online] [https://github.com/ETRI-XAINLP/KorFactScore](https://github.com/ETRI-XAINLP/KorFactScore), 2024
+* 노지현*, 김민호*, 배용진, 김현기, 이형직, 장명길, 배경만, "한국어 생성 문서의 단일 사실 관계에 대한 설명 기술," [Online] [https://github.com/ETRI-XAINLP/KorFactScore](https://github.com/ETRI-XAINLP/KorFactScore), 2024
 
 <br/>
 <br/>
