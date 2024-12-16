@@ -4,6 +4,10 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 
+### Announcement 
+* 12/17/2024: "single_run" 브랜치(branch)를 새로이 생성하였습니다. 이 브랜치는 하나의 생성 문서만을 입력으로 받아서 처리하는 버전입니다. (c.f. 기존 버전은 여러개의 생성 문서들을 입력으로 받아서 한번에 배치(batch)로 처리하는 버전이었습니다.) 
+
+
 ### 개발 배경
 
 * 인공지능(AI)이 생성한 문서 내 정보가 신뢰할 수 있는 지에 대한 추가적인 검증이 필요함.
