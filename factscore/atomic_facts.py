@@ -2,6 +2,7 @@ import json
 import numpy as np
 import re
 import string
+from tqdm import tqdm
 from rank_bm25 import BM25Okapi
 import os
 import kss
@@ -35,6 +36,7 @@ class AtomicFactGenerator(object):
         self.af_model_name = af_model_name
         self.demon_path = os.path.join(demon_dir, demon_fn)
 
+        print(f"@AtomicFactGenerator", flush=True)
         self.openai_lm = ModelFactory.from_pretrained(af_model_name, cache_file=gpt3_cache_file, key_path=key_path)
 
         # get the demos
@@ -128,7 +130,7 @@ class AtomicFactGenerator(object):
         prompts = []
         prompt_to_sent = {}
         atoms = {}
-        for sentence in sentences:
+        for sentence in tqdm(sentences, desc="Generating AFs >> "):
             if sentence in atoms:
                 continue
 

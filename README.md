@@ -4,6 +4,10 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 
+### Announcement 
+* 12/17/2024: "single_run" 브랜치(branch)를 새로이 생성하였습니다. 이 브랜치는 하나의 생성 문서만을 입력으로 받아서 처리하는 버전입니다. (c.f. 기존 버전은 여러개의 생성 문서들을 입력으로 받아서 한번에 배치(batch)로 처리하는 버전이었습니다.) 
+
+
 ### 개발 배경
 
 * 인공지능(AI)이 생성한 문서 내 정보가 신뢰할 수 있는 지에 대한 추가적인 검증이 필요함.
@@ -89,6 +93,19 @@ python -m factscore.factscorer \
 
 * `--use_atomic_facts`: 이 flag 적용시, atomic fact generator를 사용하지 않고 미리 생성된 atomic facts를 가져와서 사용할 수 있습니다. 이 경우 `input_path`는 atomic facts를 포함하고 있는 입력 파일이어야 합니다. 제공된 `data/k_labeled/gen_bio-gpt_4-{kr/fr}-all.jsonl` 파일은 gpt-4로 생성된 atomic-facts를 포함하고 있습니다. (아래 실험 결과를 재현할 때 사용됩니다.)
 * `--knowledge_source`: 기본적으로 kowiki-20240301.db로 설정되어 있습니다. (한국어 Wikipedia - 2024/03/01).
+
+<br>
+<br>
+
+**"single_run" 브랜치를 실행하는 예시** 
+```bash
+python -m factscore.factscorer_sr \
+    --input_path ui_input.json \
+    --af_model_name gpt-4-0125-preview \
+    --model_name_or_path gpt-4-0125-preview \
+    --retrieval_type bm25 
+```
+
 
 <!--개인 DB를 적용하고 싶다면 [아래 설정](#To-use-a-custom-knowledge-source) 방법을 참고하세요. 그리고 db 이름을 이 flag에 넣어주세요. -->
 

@@ -4,6 +4,7 @@ import jsonlines
 import kss
 from rank_bm25 import BM25Okapi
 import random
+from tqdm import tqdm
 
 from factscore.atomic_facts import best_demos, sent_tokenize_kor
 from factscore.openai_lm import OpenAIModel
@@ -14,10 +15,11 @@ class InvalidGenerationFilter(object):
     def __init__(self, key_path, filter_demon_file, lm_cache_file, filter_cache_file, model_name="gpt-3.5-turbo-0125", temperature=1.0):
         self.model_name = model_name
         self.temperature = temperature
+        print(f"@InvalidGenerationFilter", flush=True)
         self.openai_lm = ModelFactory.from_pretrained(model_name, cache_file=lm_cache_file, key_path=key_path, temperature=self.temperature)
         self.filter_cache_file = filter_cache_file
         #
-        self.verbose = True
+        self.verbose = False
 
         #
         def read_filter_demons(filter_demon_file):
@@ -39,11 +41,16 @@ class InvalidGenerationFilter(object):
             return filter_demons_pos, filter_demons_neg
 
         # get demos for filtering "abstained sentences"
-        self.filter_demons_pos, self.filter_demons_neg = read_filter_demons(filter_demon_file)
-        # TODO(kmh): active filter demons retrieval for positive case???
-        # make bm25 for negative filtering demons
-        tokenized_corpus = [doc.split(" ") for doc in self.filter_demons_neg]
-        self.bm25_fta_neg = BM25Okapi(tokenized_corpus)
+        if filter_demon_file != None:
+            self.filter_demons_pos, self.filter_demons_neg = read_filter_demons(filter_demon_file)
+            # TODO(kmh): active filter demons retrieval for positive case???
+            # make bm25 for negative filtering demons
+            tokenized_corpus = [doc.split(" ") for doc in self.filter_demons_neg]
+            self.bm25_fta_neg = BM25Okapi(tokenized_corpus)
+        else:
+            self.filter_demons_pos, self.filter_demons_neg = None, None
+            self.bm25_fta_neg = None
+
         #
         self.prompt_pref_filter_abstrained = "주어진 문장이 인물에 대한 실질적인 내용을 포함하는지 판별해주세요. 다른 문서의 참조를 권하거나 답변을 기권(abstain)한 경우도 '불포함'입니다. 인물에 대한 정보를 다음에 올 문장에서 제시하겠다고 한 경우 '불포함'입니다. 답변은 'True' 또는 'False' 중 하나로만 선택해주세요.\n(입력) "
 
@@ -80,7 +87,7 @@ class InvalidGenerationFilter(object):
         # TODO: save intermediate results for request failures by LLMs
         verdicts = {}
         meaningful_sentences = []
-        for s in sentences:
+        for s in tqdm(sentences, desc="Filtering invalid sentences >> "):
             prompt = self.generate_prompt_for_filter_abstain(topic, s)
             qlf = self.query_lm_for_filtering(prompt)
             if qlf:
@@ -129,7 +136,7 @@ class InvalidGenerationFilter(object):
                 f"[WARNING] > {init_len - remained_len}/{init_len} sentences were removed from the original generation.\n            We will omit its fact verifications.")
             sentences = []
         #
-        f_filtered = False if init_len == remained_len else True
+        f_filtered = False if init_len == remained_len else True    # 주의! partially filtered도 True가 됨.
 
         return f_filtered, sentences
 
@@ -189,3 +196,16 @@ class InvalidGenerationFilter(object):
                         valid_length_pairs.append((len_init_gen, len_new_gen))
         #
         return valid_topics, valid_gens, valid_length_pairs, filtered_lengths
+
+    def run1(self, topic, generation):
+        # filtering using model
+        init_sents = self.get_init_sentences(generation)
+        # init_sents = init_sents[:2]       # kmh: for Debugging purpose
+        sentences, verdicts = self.filter_abstained_sentences(topic, init_sents)
+        f_filtered, sentences = self.determine_fully_filtered(init_sents, sentences)
+        #
+        if len(sentences) == 0:
+            print(f"\t$$$$$\t [{topic}] is invalid", flush=True)
+        #
+        new_gen = " ".join(sentences)
+        return f_filtered, new_gen

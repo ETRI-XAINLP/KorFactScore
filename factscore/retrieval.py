@@ -109,9 +109,17 @@ class DocDB(object):
         results = cursor.fetchall()
         results = [r for r in results]
         cursor.close()
-        assert results is not None and len(results)==1, f"`topic` in your data ({title}) is likely to be not a valid title in the DB."
-        results = [{"title": title, "text": para} for para in results[0][0].split(SPECIAL_SEPARATOR)]
-        assert len(results)>0, f"`topic` in your data ({title}) is likely to be not a valid title in the DB."
+        # org: start
+        # assert results is not None and len(results)==1, f"`topic` in your data ({title}) is likely to be not a valid title in the DB."
+        # results = [{"title": title, "text": para} for para in results[0][0].split(SPECIAL_SEPARATOR)]
+        # assert len(results)>0, f"`topic` in your data ({title}) is likely to be not a valid title in the DB."
+        # org : end
+        # kmh: start
+        if results is not None and len(results)==1:
+            results = [{"title": title, "text": para} for para in results[0][0].split(SPECIAL_SEPARATOR)]
+        else:
+            results = []
+        # kmh: end
         return results
 
 class Retrieval(object):
